@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './FeedbackOptions.module.css';
 
 class FeedbackOptions extends Component {
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   render() {
     const { options, onLeaveFeedback } = this.props;
     return (
-      <div>
+      <div className={css.buttonContainer}>
         {options.map(option => (
-          <button onClick={() => onLeaveFeedback(option)}>{option}</button>
+          <button
+            className={css.button}
+            onClick={() => onLeaveFeedback(option)}
+          >
+            {this.capitalizeFirstLetter(option)}
+          </button>
         ))}
       </div>
     );
